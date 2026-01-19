@@ -55,7 +55,7 @@ flutter run -d android
 ```
 we_split/
 ├── lib/
-│   └── main.dart                    # Main app & calculator (156 lines)
+│   └── main.dart                    # Main app & calculator (154 lines)
 ├── pubspec.yaml                     # Dependencies
 └── README.md
 ```
@@ -91,3 +91,7 @@ MIT License - see [LICENSE](LICENSE) file for details
 **Simon Bogutzky**  
 - Medium: [@simonbogutzky](https://medium.com/@simonbogutzky)
 - Senior iOS Engineer @ Open Reply Germany
+
+## Contributor
+
+**Alenas**

@@ -59,7 +59,7 @@ class HomeView extends GetWidget<BillController> {
                     trailing: Row(
                       mainAxisSize: MainAxisSize.min,
                       children: [
-                        Text('$numberOfPeople people', style: TextStyle(color: Theme.of(context).colorScheme.secondary)),
+                        Text('$numberOfPeople people', style: TextStyle(color: context.theme.colorScheme.secondary)),
                         const Icon(Icons.chevron_right),
                       ],
                     ),
@@ -80,13 +80,11 @@ class HomeView extends GetWidget<BillController> {
                 crossAxisAlignment: CrossAxisAlignment.start,
                 spacing: 16.0,
                 children: [
-                  Text('How much tip do you want to leave?', style: Theme.of(context).textTheme.titleSmall),
+                  Text('How much do you want to tip?', style: context.theme.textTheme.titleSmall),
                   SegmentedButton<int>(
-                    segments: tipPercentages.map((percentage) {
-                      return ButtonSegment<int>(value: percentage, label: Text('$percentage%'));
-                    }).toList(),
+                    segments: [for (var percentage in tipPercentages) ButtonSegment(value: percentage, label: Text('$percentage%'))],
                     selected: {tipPercentage.value},
-                    onSelectionChanged: (Set<int> newSelection) {
+                    onSelectionChanged: (newSelection) {
                       tipPercentage.value = newSelection.first;
                     },
                   ),
@@ -99,7 +97,7 @@ class HomeView extends GetWidget<BillController> {
               child: Center(
                 child: Text(
                   controller.totalPerPerson(numberOfPeople.value, tipPercentage.value, checkAmount.value),
-                  style: Theme.of(context).textTheme.headlineMedium,
+                  style: context.theme.textTheme.headlineMedium,
                 ),
               ).paddingAll(16.0),
             ),
@@ -143,7 +141,7 @@ class NumberOfPeoplePicker extends StatelessWidget {
           final isSelected = index == (initialValue - 2);
           return ListTile(
             title: Text('$peopleCount people'),
-            trailing: isSelected ? Icon(Icons.check, color: Theme.of(context).colorScheme.primary) : null,
+            trailing: isSelected ? Icon(Icons.check, color: context.theme.colorScheme.primary) : null,
             selected: isSelected,
             onTap: () {
               Get.back(result: peopleCount);
